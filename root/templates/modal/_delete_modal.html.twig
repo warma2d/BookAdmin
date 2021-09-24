@@ -1,0 +1,41 @@
+<div id="appModal" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Действительно удалить <span id="deleteContent"></span> ?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Нет</button>
+                <button id="modalBtnDelete" type="button" class="btn btn-danger">Удалить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    function deleteConfirm(message, actionLink)
+    {
+        var appModal = new bootstrap.Modal(document.getElementById('appModal'));
+        var deleteContent = document.getElementById('deleteContent');
+        deleteContent.innerText = message;
+        var modalBtnDelete = document.getElementById('modalBtnDelete');
+        appModal.show();
+
+        var modalConfirm = function(callback) {
+            modalBtnDelete.addEventListener('click', () => {
+                callback(true)
+                appModal.hide()
+            })
+        };
+
+        modalConfirm(function(confirm) {
+            if (confirm) {
+                document.location.href = actionLink
+            }
+        });
+    }
+</script>

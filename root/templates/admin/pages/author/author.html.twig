@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block menu %}
+    {% include 'admin/_menu.html.twig' %}
+{% endblock %}
+
+{% block content %}
+
+{{ form(form) }}
+
+{% if errors is defined %}
+    {% for propertyName, error in errors %}
+        {{ propertyName }} - {{ error }}<br>
+    {% endfor %}
+{% endif %}
+
+{% endblock %}

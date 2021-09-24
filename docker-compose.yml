@@ -1,0 +1,40 @@
+version: "2.4"
+services:
+
+    # PHP service
+    app:
+        build: .
+        working_dir: /var/www/BookAdmin/public
+        volumes:
+            - ./root/:/var/www/BookAdmin
+        networks:
+            - app-network
+
+    # MySQL database service
+    db:
+        image: mysql:5.7
+        command: --character-set-server=utf8 --collation-server=utf8_general_ci
+        ports:
+            - "3306:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+            MYSQL_DATABASE: ${DB_DATABASE}
+            MYSQL_USER: ${DB_USERNAME}
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+        networks:
+            - app-network
+
+    # Nginx service
+    nginx:
+        image: nginx:alpine
+        ports:
+            - 8000:80
+        volumes:
+            - ./root/:/var/www/BookAdmin
+            - ./nginx/conf.d/:/etc/nginx/conf.d/
+        networks:
+            - app-network
+
+networks:
+    app-network:
+        driver: bridge

@@ -1,0 +1,17 @@
+<style>
+    .errors {
+        color: darkred;
+    }
+
+    span.link {
+        cursor: pointer;
+    }
+</style>
+
+<div class="errors">
+    {% if errors is defined %}
+        {% for propertyName, error in errors %}
+            {{ error }}<br>
+        {% endfor %}
+    {% endif %}
+</div>

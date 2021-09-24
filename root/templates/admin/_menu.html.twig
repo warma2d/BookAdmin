@@ -1,0 +1,5 @@
+<ul class="nav justify-content-center">
+    <li class="nav-item"><a class="nav-link {% if app.request.attributes.get('_route') == 'app_admin_index' %} active {% endif %}" href="{{ path('app_admin_index') }}">Главная админки</a></li>
+    <li class="nav-item"><a class="nav-link {% if app.request.attributes.get('_route') == 'app_admin_authors' %} active {% endif %}" href="{{ path('app_admin_authors') }}">Список Авторов</a></li>
+    <li class="nav-item"><a class="nav-link {% if app.request.attributes.get('_route') == 'app_admin_books' %} active {% endif %}" href="{{ path('app_admin_books') }}">Список Книг</a></li>
+</ul>

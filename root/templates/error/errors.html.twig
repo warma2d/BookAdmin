@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+    {% if applicationErrors is defined %}
+        {% for propertyName, error in applicationErrors %}
+            {{ propertyName }} - {{ error }}<br>
+        {% endfor %}
+    {% endif %}
+
+    {% if systemError is defined %}
+        <h3>{{ systemError }}</h3>
+    {% endif %}
+
+{% endblock %}

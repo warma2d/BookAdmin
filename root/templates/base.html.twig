@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        {% block meta %}{% endblock meta %}
+        <title>{% block title %}{% endblock title%}</title>
+        {% block stylesheets %}
+            <link href="/bootstrap.min.css" rel="stylesheet">
+        {% endblock stylesheets%}
+    </head>
+    <body>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col">
+                    <div class="menu">
+                        {% block menu %}
+                        {% endblock menu%}
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col">
+                    <div class="content">
+                        {% block content %}
+                        {% endblock content%}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% block javascripts %}
+        <script src="/bootstrap.bundle.min.js"></script>
+        {% endblock javascripts%}
+    </body>
+</html>
